@@ -4,7 +4,11 @@
 
 input_string = input('input string: ')
 
-words = input_string.split()
+words = input_string.split()  # разбиваем строки
 
-for word in words:
-    print(word)
+for ind, word in enumerate(words):  # нумеруем список строк и выводим
+    if len(word) > 10:   # проверяем длину слова
+        print (ind, word[0:10])
+
+    else:
+        print(ind, word)
