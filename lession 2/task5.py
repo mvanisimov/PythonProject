@@ -7,12 +7,22 @@
 # Набор натуральных чисел можно задать
 # непосредственно в коде, например, my_list = [7, 5, 3, 3, 2].
 
-my_list = [7, 5, 3, 3, 2]
-number = int(input("Enter Number: "))
+my_list = [7, 5, 5, 3, 2]
+number = int(input("Enter number: "))
 
-for i in my_list:
-    if my_list[i] == number:
-        my_list.insert(i + 1, number)
+count = my_list.count(number)  # берем количество элементов с числом пользователя
+
+for el in my_list:
+    if count > 0:  # если введенное число есть в списке
+        i = my_list.index(number)  # берем это число
+        my_list.insert(i + count, number)  # добавляем за ним введенное число
         break
-
-
+    else:  # если числа нет в списке, определяем, куда его добавить
+        if number > el:  # если введенное число больше первого элемента
+            j = my_list.index(el)  # берем положение числа в списке
+            print(j)
+            my_list.insert(j, number)  # вставляем на его место со сдвигом
+            break
+        elif number < my_list[len(my_list) - 1]:  # если введенное число меньше последнего элемента
+            my_list.append(number)  # добавляем его в конец списка
+print(my_list)
