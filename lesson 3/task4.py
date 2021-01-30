@@ -5,3 +5,20 @@
 # **, предусматривающая использование цикла.
 
 
+def my_func1(x, y):
+    result = x ** y
+    return result
+
+
+print(my_func1(2, -2))
+
+
+def my_func2(x, y):
+    result1 = 1
+    for i in range(abs(int(y))):
+        result1 *= x
+
+    return 1 / result1
+
+
+print(my_func2(2, -2))
