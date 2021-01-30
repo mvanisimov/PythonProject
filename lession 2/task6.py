@@ -21,9 +21,57 @@
 
 
 products = []
-product_number = 0
-
+product_number = 1
+title, price, amount, unit = None, None, None, None  # обьявляем характеристики
+print("Please, fill the product characteristics")
 while True:
-    control = input("press Enter for filling product, type 'Exit' for quit, or 'A' for product Analytics")
-    if control == 'Exit':
+    # начинаем ввод характеристик
+    if title is None:
+        title = input("Enter the product name: ")
+        continue
+
+    if price is None:
+        price = int(input("Enter the product price: "))
+
+        continue
+
+    if amount is None:
+        amount = int(input("Enter the product amount: "))
+
+        continue
+
+    if unit is None:
+        unit = input("Enter the product unit: ")
+        continue
+
+    products.append(
+        (product_number,
+         {'title': title,
+          'price': price,
+          'amount': amount,
+          'unit': unit}))  # добавляем все элементы в список
+
+    title, price, amount, unit = None, None, None, None  # обнуляем характеристики после добавления в список
+    product_number += 1
+
+    print(products)
+    q = input(
+        "Stop forming product list? y/n :")  # запрашиваем, нужно ли закончить формирование списка( выход из цикла)
+    if q.lower() == "y":
         break
+    # далее цикл повторяется, если не введено y
+
+    # формирование словаря аналитики
+analytics = {
+    'title': [],
+    'price': [],
+    'amount': [],
+    'unit': set()}  # создаем словарь аналитики
+
+for i, item in products:  # добавляем в словарь все элементы которые были введены
+    analytics['title'].append(item['title'])
+    analytics['price'].append(item['price'])
+    analytics['amount'].append(item['amount'])
+    analytics['unit'].add(item['unit'])
+
+print(analytics)
