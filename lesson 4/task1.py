@@ -2,9 +2,10 @@
 # необходимо использовать формулу: (выработка в часах * ставка в час) + премия. Для выполнения расчета для конкретных
 # значений необходимо запускать скрипт с параметрами.
 
-def salary_calc(hours_worked: int, hourly_rate: float, bonus: float): # добавил ожидаемые типы аргументов.
-    salary = (hourly_rate * hours_worked) + bonus # расчет зп.
-    return salary
+from sys import argv
 
+task1, hourly_rate, hours_worked, bonus = argv  #аргументы при запуске скрипта
 
-print(salary_calc(56, 535.8, 3000))
+salary = int(hourly_rate) * int(hours_worked) + int(bonus)  # расчет зп.
+
+print(f"your salary is {salary}")

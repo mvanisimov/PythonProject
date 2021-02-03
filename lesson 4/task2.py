@@ -4,9 +4,9 @@
 # 44, 4, 10, 78, 123].
 
 test_list = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
-final_list = []
-for i in range(1, len(test_list)):
-    if test_list[i] > test_list[i - 1]:
-        final_list.append(test_list[i])
+# чтобы при первой итерации не сравнивались первый и последний элементы списка ( индекс -1 дает последний элемент),
+# начинаем со 2 элемента, задаем range с 1.
+final_list = [test_list[el] for el in range(1, len(test_list)) if test_list[el] > test_list[el - 1]]
 
 print(final_list)
+
