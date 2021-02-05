@@ -4,7 +4,7 @@
 
 from sys import argv
 
-task1, hourly_rate, hours_worked, bonus = argv  #аргументы при запуске скрипта
+task1, hourly_rate, hours_worked, bonus = argv  # аргументы при запуске скрипта
 
 salary = int(hourly_rate) * int(hours_worked) + int(bonus)  # расчет зп.
 

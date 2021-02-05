@@ -5,12 +5,19 @@
 # завершаем цикл. Во втором также необходимо предусмотреть условие, при котором повторение элементов списка будет
 # прекращено.
 
-from itertools import count
-
+from itertools import count, cycle
 
 for el in count(3):
-
+    print(el)
     if el == 10:
         break
 
+#####################################################
+input_list = ['coffee', 'tea', 'milk', 'soda', 'juice']
+cycle_input = cycle(input_list)
+iteration = int(input("enter number to iterate: "))  # запрашиваем количество итераций, чтобы цикл не был бесконечным
+i = 0
 
+while i < iteration:
+    print(next(cycle_input))
+    i += 1
