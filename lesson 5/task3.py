@@ -2,16 +2,21 @@
 # Определить, кто из сотрудников имеет оклад менее 20 тыс., вывести фамилии этих сотрудников. Выполнить подсчет
 # средней величины дохода сотрудников.
 
-employees_salary = {"Ivanov": 50000,            # словарь из сотрудников и их зарплат
-                    "Petrov": 10000,
-                    "Sidorov": 35000,
-                    "Frolov": 19000,
-                    "Makarov": 22000,
-                    "Okunev": 67000}
+salary_min = 20000
 
-with open("task3.txt", "r+", encoding="utf-8") as txt:
-    for em, sal in employees_salary.items():  # записываем сотрудников и зарплату построчно в файл
-        txt.write(f"{em} : {sal}\n")
+with open("task3.txt", "r", encoding="utf-8") as txt:  # открываем файл на чтение и читаем строки в список
+    employees = txt.readlines()
 
+    salary_sum = 0
+    for empl in employees:  # разбиваем значение зп и имени
+        name, salary = empl.split()
 
-    for line in txt:
+        salary = int(salary)  # приводим к int значение зп
+
+        if salary <= 20000:  # выводим сотрудников с зп меньше 20000
+            print(f"зарплата меньше 20000 у {name}")
+
+        salary_sum += salary
+
+    avg_salary = salary_sum / len(employees)  # вычисляем среднюю зп всех сотрудников
+    print(f"Средняя зарплата сотрудников: {round(avg_salary)}")

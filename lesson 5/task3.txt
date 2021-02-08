@@ -1,0 +1,6 @@
+Ivanov 50000
+Petrov 10000
+Sidorov 35000
+Frolov 19000
+Makarov 22000
+Okunev 67000
