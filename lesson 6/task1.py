@@ -4,9 +4,18 @@
 # третьего (зеленый) — на ваше усмотрение. Переключение между режимами должно осуществляться только в указанном
 # порядке (красный, желтый, зеленый). Проверить работу примера, создав экземпляр и вызвав описанный метод.
 
+from time import sleep
+
+
 class TrafficLight:
-    __color = ''
-    __states = []
+    __colors = {'red': 7, 'yellow': 2, 'green': 10}  # словарь цветов и времени состояния
 
     def running(self):
-        self.__color = self.__states{0}
+        for color, time in self.__colors.items():  # обращяемся к словарю, берем значения цвета и времени состяния
+            print(f"Traffic light switched to {color}")
+            print(f"{color} light will glow for {time} seconds")
+            sleep(time)  # сколько будет гореть свет
+
+
+trlight = TrafficLight()
+trlight.running()
