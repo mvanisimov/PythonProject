@@ -6,36 +6,63 @@
 # подсчет расхода ткани. Проверить на практике полученные на этом уроке знания: реализовать абстрактные классы для
 # основных классов проекта, проверить на практике работу декоратора @property.
 
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
+# создаем абстрактный класс одежда, в котором будут переменные имени и количества ткани
 class Cloth(ABC):
-    name = ''
+    _name = ''
+    _text_count = 0
 
-    @abstractmethod
+    # получение и запись переменной name
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name: str):
+        if not type(name) == str:  # проверяем что полученная переменная - строка
+            raise ValueError
+        self._name = name
+
+    # получение переменной text_count
+    @property
     def textile_count(self):
-        """"расчет количества ткани"""
+        return self._text_count
 
 
+# класс пальто
 class Coat(Cloth):
 
-    def __init__(self, size: int, name: str):
-        self.name = name
+    def __init__(self, name: str, size: int):
+        self._name = name
         self._size = size
-
-    def textile_count(self):
-        return self._size / 6.5 + 0.5
+        self._text_count = round(self._size / 6.5 + 0.5)  # рассчитываем и записываем количество ткани
 
 
+# класс костюм
 class Suit(Cloth):
 
-    def __init__(self, height: int, name: str):
-        self.name = name
+    def __init__(self, name: str, height: float):
+        self._name = name
         self._height = height
-
-    def textile_count(self):
-        return 2 * self._height + 0.3
+        self._text_count = round(2 * self._height + 0.3)  # рассчитываем и записываем количество ткани
 
 
-suit = Suit(175, "suit")
-print(suit.textile_count())
+# считаем общее количество ткани
+def total_textile_count(text_count1, text_count2):
+    return round(text_count1 + text_count2)
+
+
+# проверяем
+suit = Suit("suit", 1.75)
+coat = Coat("coat", 56)
+
+suit_txt_count = suit.textile_count
+coat_txt_count = coat.textile_count
+
+total_txt_count = total_textile_count(suit_txt_count, coat_txt_count)
+
+print(f"amount of textile for suit is {suit_txt_count}")
+print(f"amount of textile for coat is {coat_txt_count}")
+print(f" total amount of textile needed is {total_txt_count}")
